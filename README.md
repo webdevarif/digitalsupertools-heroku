@@ -1,1 +1,1 @@
-# digitalsupertools-heroku
+# digital-supertools
