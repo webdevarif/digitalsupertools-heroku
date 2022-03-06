@@ -25,9 +25,6 @@ urlpatterns = [
     # path('api/email/', include('emails.urls', namespace='emails')),
     # path('api/calculator/', include('calculator.urls', namespace='calculator')),
 
-    # Forums
-    # path('api/forums/', include('forums.urls', namespace='forums')),
-
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += [re_path(r'^.*', TemplateView.as_view(template_name='index.html'))]
