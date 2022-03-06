@@ -18,9 +18,6 @@ urlpatterns = [
     path('auth/refresh_token/', TokenRefreshView.as_view(), name='refresh_token'),
     path('api/user/', include('accounts.urls', namespace='accounts')),
 
-    # CodeZen 
-    # path('api/codezen/', include('codezen.urls', namespace='codezen')),
-
     # Services 
     # path('api/grouplink/', include('app_grouplink.urls', namespace='groups_link')),
 
