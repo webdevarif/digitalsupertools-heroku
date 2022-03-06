@@ -19,25 +19,6 @@ from os.path import isfile
 def user_directory_path(instance, filename):
     return 'accounts/user_{0}/{1}'.format(instance.username, filename)
 
-# # Default Random Image
-# def random_image():
-#     # directory = os.path.join(settings.BASE_DIR, 'accounts/default_avatar')
-#     directory = os.path.join(settings.BASE_DIR, 'static/accounts/default_avatar')
-#     files = os.listdir(directory)
-#     images = [file for file in files if os.path.isfile(os.path.join(directory, file))]
-#     rand = choice(images)
-#     return rand
-
-def random_image():
-    lst_arr = os.path.join(settings.BASE_DIR, 'static/accounts/default_avatar')
-    print(lst_arr)
-    return 'accounts/default_avatar/' + choice(lst_arr)
-
-# def random_image():
-#     dir_path = 'static/accounts/default_avatar'
-#     files = [content for content in listdir(dir_path) if isfile(path_join(dir_path, content))]
-#     return path_join(dir_path, choice(files))
-
 class UserAccountManager(BaseUserManager):
 
     def create_superuser(self, email, username, first_name, last_name, password=None, **extra_fields):
@@ -75,7 +56,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     username    = models.CharField(max_length=150, verbose_name="Username", unique=True)
     first_name  = models.CharField(max_length=50, blank=True, null=True)
     last_name   = models.CharField(max_length=50, blank=True, null=True)
-    picture     = models.FileField(upload_to=user_directory_path, blank=True, null=True, verbose_name='Picture', default=random_image)
+    picture     = models.FileField(upload_to=user_directory_path, blank=True, null=True, verbose_name='Picture')
     bio         = models.CharField(max_length=70, blank=True, null=True)
     about       = models.TextField(max_length=300, blank=True, null=True)
     is_staff    = models.BooleanField(default=True)
