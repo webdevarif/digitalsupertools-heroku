@@ -18,8 +18,8 @@ urlpatterns = [
     path('auth/refresh_token/', TokenRefreshView.as_view(), name='refresh_token'),
     path('api/user/', include('accounts.urls', namespace='accounts')),
 
-    # Services 
-    # path('api/grouplink/', include('app_grouplink.urls', namespace='groups_link')),
+    # Websites
+    path('api/sites/', include('sites.urls', namespace='sites')),
 
     #Tools
     # path('api/email/', include('emails.urls', namespace='emails')),
