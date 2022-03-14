@@ -12,9 +12,20 @@ from rest_framework.generics import get_object_or_404
 
 from rest_framework_api_key.permissions import HasAPIKey  
 
-# Email Verify List
+# Website List
 class WebsiteList(generics.ListCreateAPIView):
     queryset = Website.objects.all()
     serializer_class = WebsiteSerializer
     permission_classes = [permissions.AllowAny]
     pagination_class = StandardResultsSetPagination
+
+# Website List Per User
+class WebsiteUserList(generics.ListCreateAPIView):
+    serializer_class = WebsiteSerializer
+    permission_classes = [permissions.AllowAny]
+    pagination_class = StandardResultsSetPagination
+
+    def get(self, request, username, format=None):
+        queryset = Website.objects.filter(user__username=username)
+        serializers_data = WebsiteSerializer(queryset, many=True).data
+        return Response(serializers_data)
