@@ -14,3 +14,7 @@ class WebsiteAdmin(admin.ModelAdmin):
         ('Website content', {'fields': ('body',)}),
         ('Status', {'fields': ('status',)}),
     )
+
+
+admin.site.register(Book)
+admin.site.register(Bookpage)

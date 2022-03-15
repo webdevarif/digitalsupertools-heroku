@@ -29,3 +29,10 @@ class WebsiteUserList(generics.ListCreateAPIView):
         queryset = Website.objects.filter(user__username=username)
         serializers_data = WebsiteSerializer(queryset, many=True).data
         return Response(serializers_data)
+
+# Book List
+class BookList(generics.ListCreateAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+    permission_classes = [permissions.AllowAny]
+    pagination_class = StandardResultsSetPagination
