@@ -19,6 +19,15 @@ class WebsiteList(generics.ListCreateAPIView):
     permission_classes = [permissions.AllowAny]
     pagination_class = StandardResultsSetPagination
 
+
+# Website Detail
+class WebsiteDetail(generics.RetrieveAPIView):
+    queryset = Website.objects.all()
+    serializer_class = WebsiteSerializer
+    lookup_field = 'slug'
+    permission_classes = (permissions.AllowAny, )
+
+    
 # Website List Per User
 class WebsiteUserList(generics.ListCreateAPIView):
     serializer_class = WebsiteSerializer
@@ -39,7 +48,7 @@ class BookList(generics.ListCreateAPIView):
 
 
 # Book List
-class SiteBookList(generics.RetrieveAPIView):
+class BookDetail(generics.RetrieveAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     lookup_field = 'slug'
