@@ -36,3 +36,11 @@ class BookList(generics.ListCreateAPIView):
     serializer_class = BookSerializer
     permission_classes = [permissions.AllowAny]
     pagination_class = StandardResultsSetPagination
+
+
+# Book List
+class SiteBookList(generics.RetrieveAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+    lookup_field = 'slug'
+    permission_classes = (permissions.AllowAny, )
