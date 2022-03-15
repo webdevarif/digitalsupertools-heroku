@@ -45,6 +45,22 @@ class BookList(generics.ListCreateAPIView):
     serializer_class = BookSerializer
     permission_classes = [permissions.AllowAny]
     pagination_class = StandardResultsSetPagination
+    
+
+# Book List
+class WebsiteBookList(generics.ListAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+    permission_classes = [permissions.AllowAny]
+    pagination_class = StandardResultsSetPagination
+
+    # Get Books With Slug
+    def get_queryset(self):
+        slug = self.kwargs['slug']
+        return Book.objects.filter(website__slug=slug)
+
+    
+
 
 
 # Book List
