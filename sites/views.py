@@ -59,13 +59,18 @@ class WebsiteBookList(generics.ListAPIView):
         slug = self.kwargs['slug']
         return Book.objects.filter(website__slug=slug)
 
-    
-
-
-
-# Book List
+# Book Detail
 class BookDetail(generics.RetrieveAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     lookup_field = 'slug'
     permission_classes = (permissions.AllowAny, )
+    
+
+# Book Page Detail
+class BookPageDetail(generics.RetrieveAPIView):
+    queryset = Bookpage.objects.all()
+    serializer_class = WebsiteSerializer
+    lookup_field = 'slug'
+    permission_classes = (permissions.AllowAny, )
+    

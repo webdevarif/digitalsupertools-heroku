@@ -54,6 +54,9 @@ INSTALLED_APPS = [
     'accounts',
     # Website
     'sites',
+
+    # Tools
+    'toolcalculate',
 ]
 
 MIDDLEWARE = [

@@ -23,7 +23,7 @@ urlpatterns = [
 
     #Tools
     # path('api/email/', include('emails.urls', namespace='emails')),
-    # path('api/calculator/', include('calculator.urls', namespace='calculator')),
+    path('api/toolcalculate/', include('toolcalculate.urls', namespace='toolcalculate')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
